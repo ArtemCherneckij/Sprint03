@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8426A7F11EA79BF4004BABB8 /* Artem.json in Resources */ = {isa = PBXBuildFile; fileRef = 8426A7F01EA79BF4004BABB8 /* Artem.json */; };
 		8436A3621E9B5D5A00EFBA62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436A3611E9B5D5A00EFBA62 /* main.m */; };
 		8436A3651E9B5D5A00EFBA62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436A3641E9B5D5A00EFBA62 /* AppDelegate.m */; };
 		8436A3681E9B5D5A00EFBA62 /* Sprint03.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8436A3661E9B5D5A00EFBA62 /* Sprint03.xcdatamodeld */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8426A7F01EA79BF4004BABB8 /* Artem.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Artem.json; path = ../../../Desktop/Artem.json; sourceTree = "<group>"; };
 		8436A35C1E9B5D5A00EFBA62 /* Sprint03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprint03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436A3601E9B5D5A00EFBA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8436A3611E9B5D5A00EFBA62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		8436A35F1E9B5D5A00EFBA62 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8426A7F01EA79BF4004BABB8 /* Artem.json */,
 				8436A3601E9B5D5A00EFBA62 /* Info.plist */,
 				8436A3611E9B5D5A00EFBA62 /* main.m */,
 			);
@@ -225,6 +228,7 @@
 				8436A36E1E9B5D5A00EFBA62 /* Main.storyboard in Resources */,
 				8436A3731E9B5D5A00EFBA62 /* LaunchScreen.xib in Resources */,
 				8436A3701E9B5D5A00EFBA62 /* Images.xcassets in Resources */,
+				8426A7F11EA79BF4004BABB8 /* Artem.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +444,7 @@
 				8436A3841E9B5D5A00EFBA62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8436A3851E9B5D5A00EFBA62 /* Build configuration list for PBXNativeTarget "Sprint03Tests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +453,7 @@
 				8436A3871E9B5D5A00EFBA62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

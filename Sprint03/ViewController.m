@@ -3,14 +3,15 @@
 #import "AppInfo.h"
 #import "DetailViewController.h"
 #import "Fruits.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 {
     NSURLSession *session;
     NSMutableArray *tableData;
-    NSMutableArray *array;
+    NSEntityDescription *entity;
 }
-
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityindcator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -20,7 +21,7 @@
 -(NSManagedObjectContext *)managedObjectContext{
     NSManagedObjectContext *context = nil;
     id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]){
+    if ([delegate respondsToSelector:@selector(managedObjectContext)]){
         context = [delegate managedObjectContext];
     }
     return context;
@@ -28,17 +29,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    entity = [NSEntityDescription entityForName:@"Fruits" inManagedObjectContext:[self managedObjectContext]];
+    for (Fruits *object in tableData) {
+        NSLog(@"Found %@",object.title);
+    }
+    [self fruitsadds];
     session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+//    
+//    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Fruits"];
+//    tableData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    [self.tableView reloadData];
 }
 
 //Code for ReloadData
 
 -(void) reloadDataFromNet
 {
+    [self.activityindcator startAnimating];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Обновление" message:@"Таблица обновлена" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
     NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com/ArtemCherneckij/Sprint02/master/Artem.json"];
     [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error){
-            NSLog(@"Not load data(error)");
+            UIAlertView *alertError = [[UIAlertView alloc] initWithTitle:@"Обновление" message:@"Таблица не обновлена" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [self.activityindcator stopAnimating];
+            [alertError show];
         }else{
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSMutableArray *appArr = [NSMutableArray new];
@@ -48,6 +69,8 @@
             tableData = appArr;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
+                [self.activityindcator stopAnimating];
+                [alert show];
             });
         }
     }]resume];
@@ -68,33 +91,28 @@
     UITaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     AppInfo *info = tableData[indexPath.row];
+
     cell.title.text = info.title;
     cell.subtitle.text = info.subtitle;
+    
+//    NSManagedObject *fruits = [tableData objectAtIndex:indexPath.row];
+//    [cell.title setText:[info valueForKey:@"genus"]];
+//    [cell.subtitle setText:[info valueForKey:@"title"]];
+    
     [[session dataTaskWithURL:info.imageURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         UIImage *img = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             cell.image.image= img;
         });
     }]resume];
+
     return  cell;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //todo present view controller
 }
 
 - (IBAction)ReloadDataFromTable:(id)sender {
     [self reloadDataFromNet];
     
-    //NSManagedObjectContext *context = [self managedObjectContext];
-    
-    //NSManagedObject *newFruits = [NSEntityDescription insertNewObjectForEntityForName:@"Fruits" inManagedObjectContext:context];
-    //[newFruits setValue:@"Cherry" forKey:@"title"];
-    //[newFruits setValue:@"Rainiers" forKey:@"subtitle"];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Обновление" message:@"Таблица обновлена" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-    [alert show];
-    
     [self.tableView reloadData];
-    
 }
 
 //Code for Segue
@@ -123,5 +141,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)fruitsadds{
+    NSError *error=nil;
+    for(int i=0;i<tableData.count;i++){
+    NSManagedObject *context=[[NSManagedObject alloc]initWithEntity:entity insertIntoManagedObjectContext:[self managedObjectContext]];
+        [context setValue:[[tableData objectAtIndex:i]objectForKey:@"title" ] forKey:@"title"];
+        [[self managedObjectContext] save:&error];
+}
+}
+
 @end
 

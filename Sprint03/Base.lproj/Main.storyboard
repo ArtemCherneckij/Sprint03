@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Fruits-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -27,16 +27,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BtR-Jf-NBz" id="Cz5-FV-oQZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBb-F2-VNx">
-                                                    <rect key="frame" x="28" y="20" width="241" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="241" id="lfR-32-cOw"/>
-                                                        <constraint firstAttribute="height" constant="31" id="lis-gt-4wW"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="28"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sbtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-vW-HaW">
                                                     <rect key="frame" x="28" y="49" width="241" height="31"/>
                                                     <constraints>
@@ -54,6 +44,16 @@
                                                         <constraint firstAttribute="width" constant="90" id="Ntk-la-9oQ"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBb-F2-VNx">
+                                                    <rect key="frame" x="28" y="20" width="241" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="241" id="lfR-32-cOw"/>
+                                                        <constraint firstAttribute="height" constant="31" id="lis-gt-4wW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="28"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NQj-vW-HaW" firstAttribute="leading" secondItem="Cz5-FV-oQZ" secondAttribute="leadingMargin" constant="20" id="3Bt-3Z-3cj"/>
@@ -77,35 +77,40 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="17K-iH-t1b"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OCF-93-pKh">
+                                <rect key="frame" x="0.0" y="290" width="600" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KyE-cf-hRr">
-                        <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tik-WN-hxe">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Обновление таблицы"/>
-                            <connections>
-                                <action selector="ReloadDataFromTable:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Kuy-qq-Zfh"/>
-                            </connections>
-                        </button>
+                    <navigationItem key="navigationItem" title="Fruits" id="KyE-cf-hRr">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="eeO-fk-rX2">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tik-WN-hxe">
+                                <rect key="frame" x="180" y="7" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Обновление таблицы"/>
+                                <connections>
+                                    <action selector="ReloadDataFromTable:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Kuy-qq-Zfh"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ReloadTableData" destination="Tik-WN-hxe" id="tnU-NY-tDC"/>
+                        <outlet property="activityindcator" destination="OCF-93-pKh" id="V6R-n8-KSF"/>
                         <outlet property="reloadTableData" destination="Tik-WN-hxe" id="j1D-bK-r05"/>
                         <outlet property="tableView" destination="LkJ-Vw-c0t" id="QcZ-Uv-08n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="1057"/>
+            <point key="canvasLocation" x="1104" y="1068"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Fruits detail-->
         <scene sceneID="bTO-2O-4bY">
             <objects>
-                <viewController id="jM9-L9-4zU" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController title="Fruits detail" id="jM9-L9-4zU" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YfV-eU-rfH"/>
                         <viewControllerLayoutGuide type="bottom" id="718-pL-eEM"/>
@@ -160,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAs-0S-7Zb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="1063"/>
+            <point key="canvasLocation" x="1773" y="1068"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lCX-3V-7nY">

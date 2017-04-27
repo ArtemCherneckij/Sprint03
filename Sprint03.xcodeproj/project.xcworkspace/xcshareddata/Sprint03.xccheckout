@@ -12,12 +12,16 @@
 	<dict>
 		<key>0DCBB06BD2EB1CE71FD1736E9442AE48D4CDC071</key>
 		<string>https://github.com/ArtemCherneckij/Sprint03.git</string>
+		<key>15F816DD02B8840E12FEEC1264F0987B591CDD5A</key>
+		<string>https://github.com/ArtemCherneckij/Sprint03.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Sprint03.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0DCBB06BD2EB1CE71FD1736E9442AE48D4CDC071</key>
+		<string>../../../Sprint03</string>
+		<key>15F816DD02B8840E12FEEC1264F0987B591CDD5A</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,7 +29,7 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0DCBB06BD2EB1CE71FD1736E9442AE48D4CDC071</string>
+	<string>15F816DD02B8840E12FEEC1264F0987B591CDD5A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>0DCBB06BD2EB1CE71FD1736E9442AE48D4CDC071</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Sprint03</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>15F816DD02B8840E12FEEC1264F0987B591CDD5A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sprint03-master-3</string>
 		</dict>
 	</array>
 </dict>
